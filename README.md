@@ -1,12 +1,11 @@
-#MEAN Session Two
+#MEAN Session Three
 
-##Gulp workflow
+##A Simple Gulp Workflow
 
-Make sure that Node, Ruby and GIT are installed. Then:
+Here we abandon Koala and enable automatic browser refresh. Make sure that Node, Ruby and GIT are installed.
 
+Install [Gulp] globally for all users: 
 `sudo npm install -g gulp`
-
-`sudo npm install -g browserify`b ???
 
 `sudo gem install sass`
 
