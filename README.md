@@ -2,9 +2,9 @@
 
 ##A Simple Gulp Workflow
 
-Here we abandon Koala and enable automatic browser refresh. Make sure that Node, Ruby and GIT are installed.
+Here we abandon Koala and enable automatic browser refresh. We will be using [Node's Package Manager](https://www.npmjs.com/) (NPM) extensively. Make sure that Node, Ruby and GIT are installed first. 
 
-Install [Gulp] globally for all users: 
+Install [Gulp](https://www.npmjs.com/package/gulp) globally for all users: 
 `sudo npm install -g gulp`
 
 `sudo gem install sass`
