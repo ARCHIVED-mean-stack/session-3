@@ -20,7 +20,7 @@ CD into the working directory and initialize npm. Accept the default settings (y
 
 Now install gulp as a development dependency for the project and examine package.json afterwards. You will also note the addition of a node_modules directory in your project. 
 
-`sudo npm install --save-dev gulp`
+`$ sudo npm install --save-dev gulp`
 
 Typically we add a .gitignore file which instructs git not to include these files when pushing to github. They are re-installed by running `$ npm install`.
 
@@ -33,6 +33,9 @@ gulp.task('log', function(){
 });
 
 ```
+
+"require" tells node to look in node_modules for the gulp package and assigns its methods to a variable called gulp. "task" is one such method.
+
 `$ sudo npm install --save-dev gulp-util`
 
 ```
@@ -44,13 +47,14 @@ gulp.task('log', function(){
 });
 
 ```
-`$ gup log`
 
-Adding gulp pipes for SASS
+`$ gulp log`
 
-`$ sudo npm install --save-dev gulp-ruby-sass`
+###Adding gulp pipes for SASS
 
-[Documentation](https://github.com/sindresorhus/gulp-ruby-sass)
+`$ sudo npm install --save-dev gulp-sass`
+
+[Documentation](https://github.com/sindresorhus/gulp-sass)
 
 
 Create the gulp task
