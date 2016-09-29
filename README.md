@@ -4,16 +4,27 @@
 
 Here we abandon Koala and enable automatic browser refresh. We will be using [Node's Package Manager](https://www.npmjs.com/) (NPM) extensively. Make sure that Node, Ruby and GIT are installed first. 
 
-Install [Gulp](https://www.npmjs.com/package/gulp) globally for all users: 
-`sudo npm install -g gulp`
+Install [Gulp](https://www.npmjs.com/package/gulp) globally for all users:
 
-`sudo gem install sass`
+`$ sudo npm install -g gulp`
 
-`npm init`
+If you haven't got SASS installed you will need to run a gem command. Gem is Ruby's version of package management.
+
+`$ sudo gem install sass`
+
+CD into the working directory and initialize npm. Accept the default settings (you can change them later by editing the resulting package.json). 
+
+`$ npm init`
+
+[What is JSON?](https://en.wikipedia.org/wiki/JSON)
+
+Now install gulp as a development dependency for the project and examine package.json afterwards. You will also note the addition of a node_modules directory in your project. 
 
 `sudo npm install --save-dev gulp`
 
-Create a gulpfile.js at the root level
+Typically we add a .gitignore file which instructs git not to include these files when pushing to github. They are re-installed by running `$ npm install`.
+
+Create a gulpfile.js file at the root level of the project.
 
 ```
 var gulp = require('gulp');
@@ -127,6 +138,10 @@ gulp.task('watch', function(){
 1. 
 
 ##Reading
+
+[Sitepoint on gulp workflows](https://www.sitepoint.com/simple-gulpy-workflow-sass/)
+
+[CSS Tricks on gulp workflows](https://css-tricks.com/gulp-for-beginners/)
 
 
 
