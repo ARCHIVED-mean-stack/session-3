@@ -18,7 +18,7 @@ CD into the working directory and initialize npm. Accept the default settings (y
 
 [What is JSON?](https://en.wikipedia.org/wiki/JSON)
 
-Now install gulp as a development dependency for the project and examine package.json afterwards. You will also note the addition of a node_modules directory in your project. 
+Now install gulp as a development dependency for the project and examine package.json afterwards. Also note the addition of a node_modules directory in your project. 
 
 `$ sudo npm install --save-dev gulp`
 
@@ -28,47 +28,46 @@ Create a gulpfile.js file at the root level of the project.
 
 ```
 var gulp = require('gulp');
-gulp.task('log', function(){
-  
+gulp.task('test', function() {
+  console.log('testing 1 2 3');
 });
 
 ```
 
-"require" tells node to look in node_modules for the gulp package and assigns its methods to a variable called gulp. "task" is one such method.
+"require" tells node to look in node_modules for a package and assigns its methods to a variable called gulp. "task" is one such method.
 
-`$ sudo npm install --save-dev gulp-util`
-
-```
-var gulp = require('gulp'),
-    gutil = require('gulp-util');
-
-gulp.task('log', function(){
-  gutil.log('Gulp is awesome');
-});
-
-```
-
-`$ gulp log`
+`$ gulp test`
 
 ###Adding gulp pipes for SASS
 
 `$ sudo npm install --save-dev gulp-sass`
 
-[Documentation](https://github.com/sindresorhus/gulp-sass)
+[Documentation](https://github.com/dlmanning/gulp-sass)
 
 
 Create the gulp task
 
 ```
-var gulp = require('gulp'),
-gutil = require('gulp-util'),
-sass = require('gulp-ruby-sass');
+var gulp = require('gulp');
+var sass = require('gulp-sass');
 
 gulp.task('sass', function(){
-  sass('./scss/styles.scss')
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest('./app/css'))
+	return gulp.src('scss/styles.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('app/css'))
 });
+
+```
+Run `$ gulp sass` in terminal.
+
+Add SASS options and use them in the pipe:
+```
+var sassOptions = {
+  errLogToConsole: true,
+  outputStyle: 'expanded'
+};
+...
+.pipe(sass(sassOptions))
 
 ```
 Add sourcemaps and error display
@@ -78,25 +77,17 @@ Add sourcemaps and error display
 [Docs](https://github.com/floridoo/gulp-sourcemaps)
 
 ```
-var gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    sourcemaps = require('gulp-sourcemaps'),
-    sass = require('gulp-ruby-sass');
-
-var sassSources = ['./scss/styles.scss'];
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('sass', function(){
-  sass(sassSources, {sourcemap: true})
-  .on('error', sass.logError)
-  .pipe(sourcemaps.write())
-  .pipe(sourcemaps.write('maps', {
-    includeContent: false,
-    sourceRoot: 'source'
-  }))
-  .on('error', gutil.log)
-  .pipe(gulp.dest('./app/css'))
+	return gulp.src('scss/styles.scss')
+	.pipe(sourcemaps.init())
+    .pipe(sass(sassOptions))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('app/css'))
 });
-
 ```
 
 Run `$ gulp sass` in terminal
@@ -108,13 +99,25 @@ gulp.task('default', ['sass']);
 Run `$ gulp` in terminal
 
 ```
-gulp.task('watch', function(){
-  gulp.watch(sassSources, [sass]);
+gulp.task('watch', ['sass'], function(){
+	gulp.watch('scss/*.scss', ['sass']) 
 });
 ```
 
-`$ gulp watch`
+Run `$ gulp watch` and note that the process continues to run. However, if we make an error in our SASS file the process stops and we need to retart. Fix this by adding error handling to the sass pipe. Now, even if we make an error, the watch continues to run and the error is reported in the terminal.
 
+```
+...
+.pipe(sass(sassOptions).on('error', sass.logError))
+```
+
+###Adding Browser Refresh
+
+Globally install npm browser-sync `sudo npm install -g browser-sync` and then as a dev dependency `$ npm install browser-sync --save-dev` and create a variable container for its methods and functions:
+```
+var browserSync = require('browser-sync').create();
+```
+Its worth taking a moment to check out the features and gulp instructions at [Browser Sync](https://www.browsersync.io/docs/gulp)
   
 ##GIT and GITHUB
 
