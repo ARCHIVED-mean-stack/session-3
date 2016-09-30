@@ -1,5 +1,9 @@
 #MEAN Session Three
 
+##SVG
+
+
+
 ##A Simple Gulp Workflow
 
 Here we abandon Koala and enable automatic browser refresh. We will be using [Node's Package Manager](https://www.npmjs.com/) (NPM) extensively. Make sure that Node, Ruby and GIT are installed first. 
@@ -152,9 +156,7 @@ gulp.task('watch', ['browserSync', 'sass'], function(){
   
 ##GIT and GITHUB
 
-##SVG
-
-###SASS responsive design of new navbar with SVG
+Initialize a repo for this and add a .gitignore file so that all the node_modules do not push.
 
 
 ##Second Page
