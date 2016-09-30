@@ -118,6 +118,37 @@ Globally install npm browser-sync `sudo npm install -g browser-sync` and then as
 var browserSync = require('browser-sync').create();
 ```
 Its worth taking a moment to check out the features and gulp instructions at [Browser Sync](https://www.browsersync.io/docs/gulp)
+
+Create a new gulp task for syncing:
+```
+gulp.task('browserSync', function() {
+	browserSync.init({
+		server: {
+			baseDir: 'app'
+		}
+	})
+});
+```
+and edit our sass task to use the reload method:
+```
+gulp.task('sass', function(){
+	return gulp.src('scss/styles.scss')
+	.pipe(sourcemaps.init())
+    .pipe(sass(sassOptions).on('error', sass.logError))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('app/css'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
+});
+```
+Let's use it in our watch task to reload when we edit html as well:
+```
+gulp.task('watch', ['browserSync', 'sass'], function(){
+	gulp.watch('scss/*.scss', ['sass']); 
+	gulp.watch('app/*.html', browserSync.reload); 
+});
+```
   
 ##GIT and GITHUB
 
