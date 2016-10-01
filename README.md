@@ -6,7 +6,7 @@
 
 ##A Simple Gulp Workflow
 
-Here we abandon Koala and enable automatic browser refresh. We will be using [Node's Package Manager](https://www.npmjs.com/) (NPM) extensively. Make sure that Node, Ruby and GIT are installed first. 
+Here we abandon Koala and enable SASS and  browser refresh using Gulp. We will also be using [Node's Package Manager](https://www.npmjs.com/) (NPM) extensively. Make sure that Node, Ruby and GIT are installed first. 
 
 Install [Gulp](https://www.npmjs.com/package/gulp) globally for all users:
 
@@ -97,14 +97,14 @@ gulp.task('sass', function(){
 Run `$ gulp sass` in terminal
 
 ```
-gulp.task('default', ['sass']);
+gulp.task('serve', ['sass']);
 ```
 
 Run `$ gulp` in terminal
 
 ```
-gulp.task('watch', ['sass'], function(){
-	gulp.watch('scss/*.scss', ['sass']) 
+gulp.task('serve', ['sass'], function(){
+	gulp.watch('scss/**/*.scss', ['sass']) 
 });
 ```
 
@@ -115,43 +115,47 @@ Run `$ gulp watch` and note that the process continues to run. However, if we ma
 .pipe(sass(sassOptions).on('error', sass.logError))
 ```
 
+We should store some of the paths in variables and use them in our statements. Something like:
+```
+var sassSources = './scss/**/*.scss';
+var sassOutput = './app/css';
+var htmlSource = 'app/**/*.html';
+```
+
 ###Adding Browser Refresh
 
-Globally install npm browser-sync `sudo npm install -g browser-sync` and then as a dev dependency `$ npm install browser-sync --save-dev` and create a variable container for its methods and functions:
+Globally install npm browser-sync `sudo npm install -g browser-sync` (opt) and then as a dev dependency `$ npm install browser-sync --save-dev` and create a variable container for its methods and functions:
 ```
 var browserSync = require('browser-sync').create();
 ```
 Its worth taking a moment to check out the features and gulp instructions at [Browser Sync](https://www.browsersync.io/docs/gulp)
 
-Create a new gulp task for syncing:
+Edit our gulp task for syncing:
 ```
-gulp.task('browserSync', function() {
-	browserSync.init({
-		server: {
-			baseDir: 'app'
-		}
-	})
+gulp.task('serve', ['sass'], function() {
+
+    browserSync.init({
+        server: "./app"
+    });
+
+    gulp.watch(sassSources, ['sass']);
+    gulp.watch(htmlSource).on('change', browserSync.reload);
 });
 ```
 and edit our sass task to use the reload method:
 ```
-gulp.task('sass', function(){
-	return gulp.src('scss/styles.scss')
-	.pipe(sourcemaps.init())
-    .pipe(sass(sassOptions).on('error', sass.logError))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('app/css'))
-    .pipe(browserSync.reload({
-      stream: true
-    }))
+gulp.task('sass', function() {
+    return gulp.src(sassSources)
+      .pipe(sourcemaps.init())
+      .pipe(sass(sassOptions).on('error', sass.logError))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(sassOutput))
+      .pipe(browserSync.stream());
 });
 ```
-Let's use it in our watch task to reload when we edit html as well:
+Let's use it as our default task:
 ```
-gulp.task('watch', ['browserSync', 'sass'], function(){
-	gulp.watch('scss/*.scss', ['sass']); 
-	gulp.watch('app/*.html', browserSync.reload); 
-});
+gulp.task('default', ['serve']);
 ```
   
 ##GIT and GITHUB
