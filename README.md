@@ -202,7 +202,7 @@ gulp.task('default', ['serve']);
 
 ##GIT and GITHUB
 
-Initialize a repo for this and add a .gitignore file so that all the node_modules do not push.
+Initialize a repo for this and add a .gitignore file so that all the node_modules do not push. Remove any existing .git directory first using `rm -rf .git` before proceeding.
 ```
 node_modules
 sass-cache
@@ -233,6 +233,8 @@ sass-cache
 [Sitepoint on gulp workflows](https://www.sitepoint.com/simple-gulpy-workflow-sass/)
 
 [CSS Tricks on gulp workflows](https://css-tricks.com/gulp-for-beginners/)
+
+Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapters 1-2
 
 
 
