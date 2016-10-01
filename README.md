@@ -203,6 +203,11 @@ gulp.task('default', ['serve']);
 ##GIT and GITHUB
 
 Initialize a repo for this and add a .gitignore file so that all the node_modules do not push.
+```
+node_modules
+sass-cache
+.DS_Store
+```
 
 
 ##Second Page
