@@ -162,6 +162,44 @@ gulp.task('default', ['serve']);
 ```
 Run `gulp` in the terminal and test refresh upon editing sass, html and check that errors in your sass are output to the console and do not stop the watch task.
 
+Here is the complete gulpfile:
+```
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+
+var sassOptions = {
+  errLogToConsole: true,
+  outputStyle: 'expanded'
+};
+
+var sassSources = './scss/**/*.scss';
+var sassOutput = './app/css';
+var htmlSource = 'app/**/*.html';
+
+gulp.task('serve', ['sass'], function() {
+
+    browserSync.init({
+        server: "./app"
+    });
+
+    gulp.watch(sassSources, ['sass']);
+    gulp.watch(htmlSource).on('change', browserSync.reload);
+});
+
+gulp.task('sass', function() {
+    return gulp.src(sassSources)
+      .pipe(sourcemaps.init())
+        .pipe(sass(sassOptions).on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(sassOutput))
+        .pipe(browserSync.stream());
+});
+
+gulp.task('default', ['serve']);
+```
+
 ##GIT and GITHUB
 
 Initialize a repo for this and add a .gitignore file so that all the node_modules do not push.
