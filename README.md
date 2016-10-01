@@ -126,7 +126,10 @@ var htmlSource = 'app/**/*.html';
 
 Globally install npm browser-sync `sudo npm install -g browser-sync` (opt) and then as a dev dependency `$ npm install browser-sync --save-dev` and create a variable container for its methods and functions:
 ```
+var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 ```
 Its worth taking a moment to check out the features and gulp instructions at [Browser Sync](https://www.browsersync.io/docs/gulp)
 
@@ -157,7 +160,9 @@ Let's use it as our default task:
 ```
 gulp.task('default', ['serve']);
 ```
-  
+
+
+
 ##GIT and GITHUB
 
 Initialize a repo for this and add a .gitignore file so that all the node_modules do not push.
