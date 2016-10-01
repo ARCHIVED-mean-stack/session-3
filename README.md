@@ -160,8 +160,7 @@ Let's use it as our default task:
 ```
 gulp.task('default', ['serve']);
 ```
-
-
+Run `gulp` in the terminal and test refresh upon editing sass, html and check that errors in your sass are output to the console and do not stop the watch task.
 
 ##GIT and GITHUB
 
