@@ -1,12 +1,8 @@
 #MEAN Session Three
 
-##SVG
-
-
-
 ##A Simple Gulp Workflow
 
-Here we abandon Koala and enable SASS and  browser refresh using Gulp. We will also be using [Node's Package Manager](https://www.npmjs.com/) (NPM) extensively. Make sure that Node, Ruby and GIT are installed first. 
+Today we abandon Koala and enable SASS and browser refresh using Gulp. We will be using [Node's Package Manager](https://www.npmjs.com/) (NPM) extensively. Make sure that Node, Ruby and GIT are installed first. 
 
 Install [Gulp](https://www.npmjs.com/package/gulp) globally for all users:
 
