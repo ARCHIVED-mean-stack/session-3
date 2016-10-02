@@ -96,22 +96,22 @@ Run `$ gulp sass` in terminal
 gulp.task('serve', ['sass']);
 ```
 
-Run `$ gulp` in terminal
-
 ```
 gulp.task('serve', ['sass'], function(){
 	gulp.watch('scss/**/*.scss', ['sass']) 
 });
 ```
 
-Run `$ gulp watch` and note that the process continues to run. However, if we make an error in our SASS file the process stops and we need to retart. Fix this by adding error handling to the sass pipe. Now, even if we make an error, the watch continues to run and the error is reported in the terminal.
+Run `$ gulp serve` and note that the process continues to run. However, if we make an error in our SASS file the process stops and we need to retart. Fix this by adding error handling to the sass pipe. Now, even if we make an error, the watch continues to run and the error is reported in the terminal.
 
 ```
 ...
 .pipe(sass(sassOptions).on('error', sass.logError))
 ```
 
-We should store some of the paths in variables and use them in our statements. Something like:
+Test this by intentionally creating an error in the sass file. The error should be reported by the watch continues to run.
+
+We should store some of the paths in variables and use them in our statements. This will make it easier to reuse our gulpfile in other projects:
 ```
 var sassSources = './scss/**/*.scss';
 var sassOutput = './app/css';
@@ -120,7 +120,15 @@ var htmlSource = 'app/**/*.html';
 
 ###Adding Browser Refresh
 
-Globally install npm browser-sync `sudo npm install -g browser-sync` (opt) and then as a dev dependency `$ npm install browser-sync --save-dev` and create a variable container for its methods and functions:
+Globally install npm browser-sync 
+```sudo npm install -g browser-sync``` 
+
+and then as a dev dependency 
+
+```$ npm install browser-sync --save-dev``` 
+
+and create a variable container for its methods and functions:
+
 ```
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
@@ -157,6 +165,14 @@ Let's use it as our default task:
 gulp.task('default', ['serve']);
 ```
 Run `gulp` in the terminal and test refresh upon editing sass, html and check that errors in your sass are output to the console and do not stop the watch task.
+
+Add a .gitignore file in sushi so that all the node_modules do not push. 
+
+```
+node_modules
+sass-cache
+.DS_Store
+```
 
 Here is the complete gulpfile:
 ```
@@ -198,27 +214,11 @@ gulp.task('default', ['serve']);
 
 ##GIT and GITHUB
 
-Initialize a repo for this and add a .gitignore file so that all the node_modules do not push. Remove any existing .git directory first using `rm -rf .git` before proceeding.
-```
-node_modules
-sass-cache
-.DS_Store
-```
+In a new terminal cd to the top level of today's files - run `ls -al` and remove any existing .git repos `rm -rf .git` Initialize a repo for the folder and push to a new github repo.
+
+##JavaScript DOM Scripting
 
 
-##Second Page
-
-###Static Pages
-* static app - anchor in browser > request to server > database > html > browser
-* AJAX - ability to refresh data after the app is running (mapquest vs google maps)
-* Progressive enhancement - a trap?
-* Spaghetti Javascript - code modifies existing DOM vs code that creates the DOM
-* Mobile native (receives json) vs browser native (receives html)
-
-###Thick client
-* Modern web architecture - browser requests html > page contains JS that builds the base structure > ajax loads content via json > JS modifies DOM to present content.
-* Benefits - same code for mobile and web, performance leverages the client (distributed), standardization on JS, html and css, speed and increased modularity.
-* Routing
 
 ##Homework
 
