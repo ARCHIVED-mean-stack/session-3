@@ -227,9 +227,10 @@ Examine the `app.js` file in the app directory. Run this in the terminal:
 
 ###The DOM
 
-```
+```html
 <a onclick="showPicOne(this); return false;" href="img/pagoda.jpg" title="Temple by a river">Pagoda</a>
-
+```
+```html
 function showPicOne(whichpic) {
   console.log(whichpic);
 }
@@ -241,7 +242,7 @@ function showPicOne(whichpic) {
 * `setAttribute(string name, string value)` adds a new attribute of the specified name and value, or sets the existing attribute to the specified value.
 * `nodeValue` a DOM property that can get and set the value of a node.
 
-```
+```js
 function showPicOne(whichpic) {
   var source = whichpic.getAttribute("href");
   console.log(source);
@@ -272,7 +273,7 @@ A common mistake is to think that the text inside an element is that element's n
 
 Thus, `description.childNodes[0].nodeValue` gets the first child node of the element with the id of "description"
 
-```
+```js
 function showPicOne(whichpic) {
   var source = whichpic.getAttribute("href");
   var placeholder = document.getElementById("placeholder");
