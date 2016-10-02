@@ -278,7 +278,7 @@ function showPicOne(whichpic) {
   var source = whichpic.getAttribute("href");
   var placeholder = document.getElementById("placeholder");
   placeholder.setAttribute("src",source);
-  var text = whichpic.getAttribute("title");
+  var text = whichPic.getAttribute("title");
   var description = document.getElementById("description");
   description.firstChild.nodeValue = text; 
 }
@@ -302,18 +302,50 @@ function prepareGallery() {
 ```
 
 Remove `onLoad="prepareGallery()"` and add:
-```
+```js
 window.onload = function() {
   prepareGallery();
 }
 ```
 ###Working with CSS
 
+Add .active class to the first list item (prepareGallery):
+```js
+...
+    return false;
+  }
+  links[0].parentNode.className = 'active';
+  showPicOne(links[0]);
+ }
+...
+```
+Pass the links variable to showPicOne (prepareGallery):
+```js
+...
+    links[i].onclick = function() {
+        showPicOne(this, links);
+        return false;
+  }
+...
+```
+Edit (showPicOne) to receive the links and use DOM traversal to set the class of the enclosing <li> element:
+
+```js
+function showPicOne(whichPic, links){
+    if(links){
+        for ( var i=0; i < links.length; i++ ) {
+            links[i].parentNode.className = '';
+        }
+    }
+    whichPic.parentNode.className = 'active';
+...
+```
+
 
 
 ##Homework
 
-1. 
+1. add a image gallery viewer to last week's homework
 
 ##Reading
 
