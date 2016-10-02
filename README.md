@@ -26,7 +26,7 @@ Typically we add a .gitignore file which instructs git not to include these file
 
 Create a gulpfile.js file at the root level of the project.
 
-```
+```js
 var gulp = require('gulp');
 gulp.task('test', function() {
   console.log('testing 1 2 3');
@@ -47,7 +47,7 @@ gulp.task('test', function() {
 
 Create the gulp task
 
-```
+```js
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 
@@ -61,7 +61,7 @@ gulp.task('sass', function(){
 Run `$ gulp sass` in terminal.
 
 Add SASS options as a viariable and reference them in the pipe:
-```
+```js
 var sassOptions = {
   errLogToConsole: true,
   outputStyle: 'expanded'
@@ -76,7 +76,7 @@ Add sourcemaps and error display
 
 [Docs](https://github.com/floridoo/gulp-sourcemaps)
 
-```
+```js
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
@@ -112,7 +112,7 @@ Run `$ gulp serve` and note that the process continues to run. However, if we ma
 Test this by intentionally creating an error in the sass file. The error should be reported by the watch continues to run.
 
 We should store some of the paths in variables and use them in our statements. This will make it easier to reuse our gulpfile in other projects:
-```
+```js
 var sassSources = './scss/**/*.scss';
 var sassOutput = './app/css';
 var htmlSource = 'app/**/*.html';
@@ -129,7 +129,7 @@ and then as a dev dependency
 
 and create a variable container for its methods and functions:
 
-```
+```js
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
@@ -138,7 +138,7 @@ var sourcemaps = require('gulp-sourcemaps');
 Its worth taking a moment to check out the features and gulp instructions at [Browser Sync](https://www.browsersync.io/docs/gulp)
 
 Edit our gulp task for syncing:
-```
+```js
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
@@ -150,7 +150,7 @@ gulp.task('serve', ['sass'], function() {
 });
 ```
 and edit our sass task to use the reload method:
-```
+```js
 gulp.task('sass', function() {
     return gulp.src(sassSources)
       .pipe(sourcemaps.init())
@@ -175,7 +175,7 @@ sass-cache
 ```
 
 Here is the complete gulpfile:
-```
+```js
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
@@ -230,7 +230,7 @@ Examine the `app.js` file in the app directory. Run this in the terminal:
 ```html
 <a onclick="showPicOne(this); return false;" href="img/pagoda.jpg" title="Temple by a river">Pagoda</a>
 ```
-```html
+```js
 function showPicOne(whichpic) {
   console.log(whichpic);
 }
