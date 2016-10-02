@@ -225,6 +225,89 @@ Examine the `app.js` file in the app directory. Run this in the terminal:
 ```sudo npm install```
 ```node app/app.js```
 
+###The DOM
+
+```
+<a onclick="showPicOne(this); return false;" href="img/pagoda.jpg" title="Temple by a river">Pagoda</a>
+
+function showPicOne(whichpic) {
+  console.log(whichpic);
+}
+```
+
+* `document.getElementById(string id)` returns a reference to the element with the specified ID.
+* `document.getElementsByTagName(string tagName)` returns a collection (array) of all elements of the specified tag name.
+* `getAttribute(string name)` returns the value of the attribute specified by the name argument
+* `setAttribute(string name, string value)` adds a new attribute of the specified name and value, or sets the existing attribute to the specified value.
+* `nodeValue` a DOM property that can get and set the value of a node.
+
+```
+function showPicOne(whichpic) {
+  var source = whichpic.getAttribute("href");
+  console.log(source);
+}
+
+function showPicOne(whichpic) {
+  var source = whichpic.getAttribute("href");
+  var placeholder = document.getElementById("placeholder");
+  console.log(placeholder);
+}
+
+function showPicOne(whichpic) {
+  var source = whichpic.getAttribute("href");
+  var placeholder = document.getElementById("placeholder");
+  placeholder.setAttribute("src",source);
+}
+
+function showPicOne(whichpic) {
+  var source = whichpic.getAttribute("href");
+  var placeholder = document.getElementById("placeholder");
+  placeholder.setAttribute("src",source);
+  var text = whichpic.getAttribute("title");
+  var description = document.getElementById("description");
+  console.log(description.childNodes[0].nodeValue); 
+}
+```
+A common mistake is to think that the text inside an element is that element's node value, but that isn't the case. The element itself has no node value — it has a child text node, and that has a node value equal to its content.
+
+Thus, `description.childNodes[0].nodeValue` gets the first child node of the element with the id of "description"
+
+```
+function showPicOne(whichpic) {
+  var source = whichpic.getAttribute("href");
+  var placeholder = document.getElementById("placeholder");
+  placeholder.setAttribute("src",source);
+  var text = whichpic.getAttribute("title");
+  var description = document.getElementById("description");
+  description.firstChild.nodeValue = text; 
+}
+```
+
+Remove the onclick and add `<body onLoad="prepareGallery()">` 
+
+```js
+function prepareGallery() {
+  var gallery = document.getElementById("imageGallery");
+  var links = gallery.getElementsByTagName("a");
+  console.log(links.length);
+  for ( var i=0; i < links.length; i++ ) {
+    console.log(i);
+    links[i].onclick = function() {
+    showPicOne(this);
+    return false;
+  }
+ }
+}
+```
+
+Remove `onLoad="prepareGallery()"` and add:
+```
+window.onload = function() {
+  prepareGallery();
+}
+```
+###Working with CSS
+
 
 
 ##Homework
