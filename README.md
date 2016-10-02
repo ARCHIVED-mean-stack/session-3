@@ -60,7 +60,7 @@ gulp.task('sass', function(){
 ```
 Run `$ gulp sass` in terminal.
 
-Add SASS options and use them in the pipe:
+Add SASS options as a viariable and reference them in the pipe:
 ```
 var sassOptions = {
   errLogToConsole: true,
