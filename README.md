@@ -218,6 +218,13 @@ In a new terminal cd to the top level of today's files - run `ls -al` and remove
 
 ##JavaScript DOM Scripting
 
+Note the directory structure. Examine the `package.json` file in the `scripting` directory. Note the main and start entries.
+
+Examine the `app.js` file in the app directory. Run this in the terminal:
+
+```sudo npm install```
+```node app/app.js```
+
 
 
 ##Homework
