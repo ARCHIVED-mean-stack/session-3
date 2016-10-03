@@ -230,6 +230,8 @@ Examine the `app.js` file in the app directory. Run this in the terminal:
 ```html
 <a onclick="showPicOne(this); return false;" href="img/pagoda.jpg" title="Temple by a river">Pagoda</a>
 ```
+Create scripts.js in the public/js directory and link to it.
+
 ```js
 function showPicOne(whichpic) {
   console.log(whichpic);
@@ -341,17 +343,16 @@ function showPicOne(whichPic, links){
 ...
 ```
 
-
-
 ##Homework
 
 1. add a image gallery viewer to last week's homework
+2. add a gulp-based workflow to last week's homework
 
 ##Reading
 
-[Sitepoint on gulp workflows](https://www.sitepoint.com/simple-gulpy-workflow-sass/)
+[Sitepoint on gulp workflows](https://www.sitepoint.com/simple-gulpy-workflow-sass/) - might be worth a look, didn't work for me. Maybe too old.
 
-[CSS Tricks on gulp workflows](https://css-tricks.com/gulp-for-beginners/)
+[CSS Tricks on gulp workflows](https://css-tricks.com/gulp-for-beginners/) - a better workflow tutorial
 
 Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapters 1-2
 
