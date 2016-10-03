@@ -345,8 +345,8 @@ function showPicOne(whichPic, links){
 
 ##Homework
 
-1. add a image gallery viewer to last week's homework
-2. add a gulp-based workflow to last week's homework
+1. add a image gallery viewer to last week's homework using the DOM scripting methods discussed in class.
+2. add a gulp-based workflow to last week's homework. Include sass compiling, source map creation and browser sync.
 
 ##Reading
 
