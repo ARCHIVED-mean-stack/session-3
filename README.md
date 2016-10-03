@@ -330,7 +330,7 @@ Pass the links variable to showPicOne (prepareGallery):
   }
 ...
 ```
-Edit (showPicOne) to receive the links and use DOM traversal to set the class of the enclosing <li> element:
+Edit (showPicOne) to receive the links and use DOM traversal to set the class of the enclosing `<li>` element:
 
 ```js
 function showPicOne(whichPic, links){
