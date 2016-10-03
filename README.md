@@ -358,8 +358,77 @@ Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS an
 
 [Mozilla on DOM Scripting](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
+================== NOTES ==================
 
 https://github.com/DannyBoyNYC/session-3-dd/tree/gulping-scripts/scripting
+
+http://daniel.deverell.com/css-files/mean-fall-2016/scripting-angular-sample.zip
+
+```js
+var myObject = {
+  "entries":[
+{
+  "title": "Yellow pagoda by a river.",
+  "name": "Yellow Pagoda",
+  "picture": ["pagoda.jpg"]
+},
+{
+  "title": "Red bridge over the river.",
+  "name": "Red Bridge",
+  "picture": ["bridge.jpg"]
+},
+{
+  "title": "Green bamboo is the material.",
+  "name": "Green Bamboo",
+  "picture": ["bamboo.jpg"]
+},
+{
+  "title": "Red stairway to the temple.",
+  "name": "Red Stairway",
+  "picture": ["stairway.jpg"]
+}
+]
+};
+
+
+window.onload = function() {
+    addContent();
+    prepareGallery();
+}
+
+function addContent(){
+    var gallery = document.getElementById("imageGallery");
+    var links = gallery.getElementsByTagName("a");
+    for ( var i=0; i < links.length; i++ ) {
+       links[i].setAttribute('title', myObject.entries[i].title);
+       links[i].setAttribute('href', 'img/' + myObject.entries[i].picture[0]);
+       links[i].firstChild.nodeValue = myObject.entries[i].name;
+   }
+};
+
+
+
+function addContent(){
+    var newgallery = document.createElement('h2')
+    var newContent = document.createTextNode("Dynamic Gallery")
+    newgallery.appendChild(newContent)
+    var currentLoc = document.getElementById('test')
+    document.body.insertBefore(newgallery, currentLoc)
+    var newList = document.createElement('ul')
+    document.body.appendChild(newList)
+    for (var i=0; i < myObject.entries.length; i++){
+        var li = document.createElement("li")
+        var a = document.createElement("a")
+        a.innerHTML = myObject.entries[i].name
+        a.setAttribute('href', 'img/' + myObject.entries[i].picture[0])
+        a.setAttribute('title', myObject.entries[i].title)
+        li.appendChild(a)
+        newList.appendChild(li)
+    };
+    document.body.insertBefore(newList, currentLoc); 
+
+};
+```
 
 
 
