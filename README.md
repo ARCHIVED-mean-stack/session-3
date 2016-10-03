@@ -350,14 +350,16 @@ function showPicOne(whichPic, links){
 
 ##Reading
 
-[Sitepoint on gulp workflows](https://www.sitepoint.com/simple-gulpy-workflow-sass/) - might be worth a look, didn't work for me. Maybe too old.
+[A Simple Gulp’y Workflow For Sass](https://www.sitepoint.com/simple-gulpy-workflow-sass/) - might be worth a look for an alternate workflow with similar features.
 
-[CSS Tricks on gulp workflows](https://css-tricks.com/gulp-for-beginners/) - a better workflow tutorial
+[Gulp for Beginners](https://css-tricks.com/gulp-for-beginners/) - another workflow tutorial
 
 Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapters 1-2
 
 [Mozilla on DOM Scripting](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
+
+https://github.com/DannyBoyNYC/session-3-dd/tree/gulping-scripts/scripting
 
 
 
