@@ -223,7 +223,7 @@ Initialize a repo for the folder and push to a new github repo.
 
 Note the directory structure. Examine the `package.json` file in the `scripting` directory. Note the main and start entries.
 
-[Here is a gulpfile that works with the scripting directory](http://daniel.deverell.com/css-files/mean-fall-2016/scripting-angular-sample.zip)
+[Here is a gulpfile that works with the scripting directory](https://github.com/DannyBoyNYC/session-3-dd/tree/gulping-scripts/scripting)
 
 Examine the `app.js` file in the app directory. CD to the top level of scripting and run these in the terminal:
 
@@ -241,8 +241,8 @@ Edit the first link in app/public/index.html:
 Create scripts.js in the public/js directory and link to it.
 
 ```js
-function showPicOne(whichpic) {
-  console.log(whichpic);
+function showPicOne(whichPic) {
+  console.log(whichPic);
 }
 ```
 
@@ -253,28 +253,28 @@ function showPicOne(whichpic) {
 * `nodeValue` a DOM property that can get and set the value of a node.
 
 ```js
-function showPicOne(whichpic) {
-  var source = whichpic.getAttribute("href");
+function showPicOne(whichPic) {
+  var source = whichPic.getAttribute("href");
   console.log(source);
 }
 
-function showPicOne(whichpic) {
-  var source = whichpic.getAttribute("href");
+function showPicOne(whichPic) {
+  var source = whichPic.getAttribute("href");
   var placeholder = document.getElementById("placeholder");
   console.log(placeholder);
 }
 
-function showPicOne(whichpic) {
-  var source = whichpic.getAttribute("href");
+function showPicOne(whichPic) {
+  var source = whichPic.getAttribute("href");
   var placeholder = document.getElementById("placeholder");
   placeholder.setAttribute("src",source);
 }
 
-function showPicOne(whichpic) {
-  var source = whichpic.getAttribute("href");
+function showPicOne(whichPic) {
+  var source = whichPic.getAttribute("href");
   var placeholder = document.getElementById("placeholder");
   placeholder.setAttribute("src",source);
-  var text = whichpic.getAttribute("title");
+  var text = whichPic.getAttribute("title");
   var description = document.getElementById("description");
   console.log(description.childNodes[0].nodeValue); 
 }
@@ -284,8 +284,8 @@ A common mistake is to think that the text inside an element is that element's n
 Thus, `description.childNodes[0].nodeValue` gets the first child node of the element with the id of "description"
 
 ```js
-function showPicOne(whichpic) {
-  var source = whichpic.getAttribute("href");
+function showPicOne(whichPic) {
+  var source = whichPic.getAttribute("href");
   var placeholder = document.getElementById("placeholder");
   placeholder.setAttribute("src",source);
   var text = whichPic.getAttribute("title");
@@ -369,6 +369,8 @@ Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS an
 ================== NOTES ==================
 
 https://github.com/DannyBoyNYC/session-3-dd/tree/gulping-scripts/scripting
+
+http://daniel.deverell.com/mean-fall-2016/scripting-angular-sample.zip 
 
 ```js
 var myObject = {
