@@ -223,12 +223,17 @@ Initialize a repo for the folder and push to a new github repo.
 
 Note the directory structure. Examine the `package.json` file in the `scripting` directory. Note the main and start entries.
 
-Examine the `app.js` file in the app directory. Run this in the terminal:
+[Here is a gulpfile that works with the scripting directory](http://daniel.deverell.com/css-files/mean-fall-2016/scripting-angular-sample.zip)
+
+Examine the `app.js` file in the app directory. CD to the top level of scripting and run these in the terminal:
 
 ```sudo npm install```
+
 ```node app/app.js```
 
 ###The DOM
+
+Edit the first link in app/public/index.html:
 
 ```html
 <a onclick="showPicOne(this); return false;" href="img/pagoda.jpg" title="Temple by a river">Pagoda</a>
@@ -364,8 +369,6 @@ Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS an
 ================== NOTES ==================
 
 https://github.com/DannyBoyNYC/session-3-dd/tree/gulping-scripts/scripting
-
-http://daniel.deverell.com/css-files/mean-fall-2016/scripting-angular-sample.zip
 
 ```js
 var myObject = {
