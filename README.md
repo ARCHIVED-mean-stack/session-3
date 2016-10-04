@@ -74,7 +74,7 @@ Add sourcemaps and error display
 
 `$ sudo npm install --save-dev gulp-sourcemaps`
 
-[Docs](https://github.com/floridoo/gulp-sourcemaps)
+[Sourcemap Docs](https://github.com/floridoo/gulp-sourcemaps)
 
 ```js
 var gulp = require('gulp');
@@ -95,6 +95,7 @@ Run `$ gulp sass` in terminal
 ```
 gulp.task('serve', ['sass']);
 ```
+Edit the task:
 
 ```
 gulp.task('serve', ['sass'], function(){
@@ -120,12 +121,12 @@ var htmlSource = 'app/**/*.html';
 
 ###Adding Browser Refresh
 
-Globally install npm browser-sync 
+Globally install npm browser-sync (optional)
 ```sudo npm install -g browser-sync``` 
 
 and then as a dev dependency 
 
-```$ npm install browser-sync --save-dev``` 
+```$ sudo npm install browser-sync --save-dev``` 
 
 and create a variable container for its methods and functions:
 
@@ -160,19 +161,11 @@ gulp.task('sass', function() {
       .pipe(browserSync.stream());
 });
 ```
-Let's use it as our default task:
+Let's use it as our default task. Add to the bottom of the file:
 ```
 gulp.task('default', ['serve']);
 ```
 Run `gulp` in the terminal and test refresh upon editing sass, html and check that errors in your sass are output to the console and do not stop the watch task.
-
-Add a .gitignore file in sushi so that all the node_modules do not push. 
-
-```
-node_modules
-sass-cache
-.DS_Store
-```
 
 Here is the complete gulpfile:
 ```js
@@ -214,7 +207,17 @@ gulp.task('default', ['serve']);
 
 ##GIT and GITHUB
 
-In a new terminal cd to the top level of today's files - run `ls -al` and remove any existing .git repos `rm -rf .git` Initialize a repo for the folder and push to a new github repo.
+In a new terminal cd to the top level of today's files - run `ls -al` and remove any existing .git repos `rm -rf .git` 
+
+CD into Sushi and add a .gitignore file so that all the node_modules and cache files do not push. 
+
+```
+node_modules
+sass-cache
+.DS_Store
+```
+Initialize a repo for the folder and push to a new github repo.
+
 
 ##JavaScript DOM Scripting
 
