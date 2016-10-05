@@ -1,5 +1,7 @@
 #MEAN Session Three
 
+The completed scripting and sushi files are located [here](http://daniel.deverell.com/mean-fall-2016/session-3-master-done.zip). Don't forget to run `npm install` from the terminal on each directory. 
+
 ##A Simple Gulp Workflow
 
 Today we abandon Koala and enable SASS and browser refresh using Gulp. We will be using [Node's Package Manager](https://www.npmjs.com/) (NPM) extensively. Make sure that Node, Ruby and GIT are installed first. 
